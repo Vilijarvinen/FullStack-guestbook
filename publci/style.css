@@ -1,0 +1,15 @@
+body {
+    background: rgb(107, 107, 107);
+    text-align: center;
+}
+
+#cont {
+    margin: 1em;
+    padding: 2em 2em;
+}
+
+#contchild {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 1em 1em;
+}
