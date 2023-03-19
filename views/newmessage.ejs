@@ -13,14 +13,17 @@
     <a href="guestbook">Guestbook</a>
     <a href="ajaxmessage">Ajax message</a>
     
+    <div id="gbcont">
     <form>
-        <input id="uname" type="text">
-        <input id="country" type="text">
-        <input id="message" type="text">
-        <input type="button" value="Send message">
+        <div id="inp">Username:&nbsp;</div><input id="uname" type="text"><br>
+        <div id="inp">Country:&nbsp;</div><input id="country" type="text"><br>
+        <div id="inp">Message:&nbsp;</div><textarea id="message"></textarea><br>
+        <input id="subbut" type="button" value="Send message">
     </form>
+    </div>
 
-    <script src="jquery-3.6.4.js"></script>
+    <script src="/jquery/jquery.js"></script>
     <script src="app.js"></script>
+    <script src="nmessage.js"></script>
 </body>
 </html>
