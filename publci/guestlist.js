@@ -3,14 +3,27 @@ $(function(){
         console.log(data);
 
         data.forEach(obj => {
-            $("#glist").append("<li><br></li>")
+            console.log(obj);
+            $("#gulist").append("<tr></tr>")
             Object.entries(obj).forEach(([key, value]) => {
                 console.log(`${key} ${value}`);
-                if (key === "username" ||
-                key === "country" ||
-                key === "message"){
-                    $("#glist").append("<li><div id=\"key\">" + key + ":</div> <div id=\"value\">" + value + "</div></li>")
-                };
+                var table = document.getElementById("gulist");
+                var lastrow = table.rows[table.rows.length - 1];
+                if (key === "username"){
+                    let td = document.createElement("td");
+                    td.innerHTML = value;
+                    lastrow.append(td);
+                }
+                if (key === "country"){
+                    let td = document.createElement("td");
+                    td.innerHTML = value;
+                    lastrow.append(td);
+                }
+                if (key === "message"){
+                    let td = document.createElement("td");
+                    td.innerHTML = value;
+                    lastrow.append(td);
+                }
             });
         });
     });

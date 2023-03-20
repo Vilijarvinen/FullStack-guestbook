@@ -1,7 +1,7 @@
 var subbut = document.getElementById("subbut");
 
 subbut.addEventListener("click", function(){
-    $.getJSON("guestbook.json", function(data){
+    $.getJSON("ajmsg.json", function(data){
 
         var runid = 0;
         data.forEach(obj => {
@@ -35,7 +35,7 @@ subbut.addEventListener("click", function(){
                     mydata.push(newdata);
                     console.log(mydata);
 
-                    fetch("/newmessage", {
+                    fetch("/ajaxmessage", {
                         method: "POST",
                         headers: {"Content-Type": "application/json",},
                         body: JSON.stringify(mydata),
@@ -43,6 +43,19 @@ subbut.addEventListener("click", function(){
                     document.getElementById("uname").value = "";
                     document.getElementById("country").value = "";
                     document.getElementById("message").value = "";
+
+                    $("#ajlist").append("<h2>All of the Ajax messages sent:</h2>");
+                    $.getJSON("ajmsg.json", function(data){
+                        data.forEach(obj => {
+                            console.log(obj);
+                            Object.entries(obj).forEach(([key, value]) => {
+                                console.log(`${key} ${value}`);
+                                if (key === "message"){
+                                    $("#ajlist").append("<li><p>" + value + "</p></li>")
+                                }
+                            });
+                        });
+                    });
                 }
                 else {
                     alert("Fill in all of the input fields!")

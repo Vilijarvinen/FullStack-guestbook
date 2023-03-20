@@ -8,20 +8,25 @@
     <title>Send a message</title>
 </head>
 <body>
-    <h1>Send a message</h1>
-    <a href="/">Homepage</a>
-    <a href="guestbook">Guestbook</a>
-    <a href="ajaxmessage">Ajax message</a>
+    <header>
+        <h1>Send a message</h1>
+        <a href="/">Homepage</a>
+        <a href="guestbook">Guestbook</a>
+        <a href="newmessage" class="active">New message</a>
+        <a href="ajaxmessage">Ajax message</a>
+    </header>
     
     <div id="gbcont">
+    <h2>Add a new guestbook entry</h2>
     <form>
-        <div id="inp">Username:&nbsp;</div><input id="uname" type="text"><br>
-        <div id="inp">Country:&nbsp;</div><input id="country" type="text"><br>
-        <div id="inp">Message:&nbsp;</div><textarea id="message"></textarea><br>
+        <p id="inp">Username:</p><input id="uname" type="text"><br>
+        <p id="inp">Country:</p><input id="country" type="text"><br>
+        <p id="inp">Message:</p><textarea id="message"></textarea><br>
         <input id="subbut" type="button" value="Send message">
     </form>
     </div>
 
+    <footer>Made by Vili Järvinen ~ 2023</footer>
     <script src="/jquery/jquery.js"></script>
     <script src="app.js"></script>
     <script src="nmessage.js"></script>

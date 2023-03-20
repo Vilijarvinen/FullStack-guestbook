@@ -35,6 +35,12 @@ app.post("/newmessage", (req, res)  => {
     });
 });
 
+app.post("/ajaxmessage", (req, res)  => {
+    fs.writeFileSync("./publci/ajmsg.json", JSON.stringify(req.body), (err) =>{
+        if (err) console.log(err);
+    });
+});
+
 app.all("*", (req, res) => {
     res.status(404).send("<style>body {background: red; text-align: center; margin-top: 5em; color: yellow; text-shadow: 2px 2px 2px black}</style><h1>404<br>The page you were looking for was not there!</h1>");
 })
