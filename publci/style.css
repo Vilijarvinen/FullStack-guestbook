@@ -73,7 +73,6 @@ table {
 
 th, td {
     text-align: left;
-    width: 33%;
     padding: 2px;
 }
 
@@ -143,4 +142,16 @@ li {
     margin: 5px;
     padding: 10px;
     color: hotpink;
+}
+
+#mesag {
+    width:60%;
+}
+
+#ctry {
+    width:20%;
+}
+
+#usna {
+    width:20%;
 }
