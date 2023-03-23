@@ -1,8 +1,11 @@
 $(function(){
     $.getJSON("guestbook.json", function(data){
         console.log(data);
-
-        data.forEach(obj => {
+        var uo = data;
+        var or = uo.sort(function (a, b){
+            return new Date(a.date) - new Date(b.date);
+        });
+        or.forEach(obj => {
             console.log(obj);
             $("#gulist").append("<tr></tr>")
             Object.entries(obj).forEach(([key, value]) => {

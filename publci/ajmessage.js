@@ -14,7 +14,10 @@ subbut.addEventListener("click", function(){
 
         console.log(runid);
 
-        var mydata = data;
+        var uo = data;
+        var mydata = uo.sort(function (a, b){
+            return new Date(a.date) - new Date(b.date);
+        });
 
         var uname = document.getElementById("uname").value;
         var country = document.getElementById("country").value;
