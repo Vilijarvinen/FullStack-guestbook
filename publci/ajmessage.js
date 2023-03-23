@@ -47,6 +47,14 @@ subbut.addEventListener("click", function(){
                     document.getElementById("country").value = "";
                     document.getElementById("message").value = "";
 
+                    function lapsetVittuun(parent) {
+                        while (parent.firstChild) {
+                            parent.removeChild(parent.firstChild);
+                        }
+                    }
+                    let lista = document.getElementById('ajlist');
+                    lapsetVittuun(lista);
+
                     $("#ajlist").append("<h2>All of the Ajax messages sent:</h2>");
                     $.getJSON("ajmsg.json", function(data){
                         data.forEach(obj => {
