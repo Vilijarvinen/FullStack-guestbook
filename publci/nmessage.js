@@ -43,6 +43,7 @@ subbut.addEventListener("click", function(){
                     document.getElementById("uname").value = "";
                     document.getElementById("country").value = "";
                     document.getElementById("message").value = "";
+                    alert("Message was sent!");
                 }
                 else {
                     alert("Fill in all of the input fields!")

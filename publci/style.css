@@ -60,6 +60,8 @@ form {
 
 #uname, #country, #message {
     width: 100%;
+    background-color: rgb(194, 194, 194);
+    color:rgb(0, 0, 0);
 }
 
 #message {
@@ -78,12 +80,13 @@ th, td {
 
 th {
     font-size: 22px;
-    background-color: rgb(196, 196, 196);
+    background-color: rgb(48, 44, 44);
+    color: rgb(255, 255, 255);
 }
 
 td {
     font-size: 16px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(194, 194, 194);
     vertical-align: top;
 }
 
@@ -154,4 +157,25 @@ li {
 
 #usna {
     width:20%;
+}
+
+::-webkit-scrollbar {
+    border:none;
+    background-color: rgb(70, 70, 70);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color:rgb(32, 32, 32);
+}
+
+#subbut {
+    border:none;
+    background-color: rgb(35, 31, 31);
+    color: hotpink;
+    height: 30px;
+}
+
+#subbut:hover {
+    color: rgb(156, 7, 82);
+    cursor: pointer;
 }
