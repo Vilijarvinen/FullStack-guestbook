@@ -58,7 +58,7 @@ form {
     padding-top: 1em;
 }
 
-#uname, #country, #message {
+#uname, #country, #message, #passw {
     width: 100%;
     background-color: rgb(194, 194, 194);
     color:rgb(0, 0, 0);
@@ -178,4 +178,20 @@ li {
 #subbut:hover {
     color: rgb(156, 7, 82);
     cursor: pointer;
+}
+
+.subbut {
+    border:none;
+    background-color: rgb(35, 31, 31);
+    color: hotpink;
+    height: 30px;
+}
+
+.subbut:hover {
+    color: rgb(156, 7, 82);
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
 }

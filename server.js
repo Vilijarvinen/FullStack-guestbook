@@ -1,25 +1,38 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require('mongoose');
 const fs = require("fs");
 const app = express();
 const data = require("./publci/guestbook.json");
 const bodyParser = require('body-parser')
-const uri = "mongodb+srv://vilija:2JfFP23rLf0sLtgA@cluster0.mjqrbvn.mongodb.net/?retryWrites=true&w=majority";
 const schemas = require("./publci/sche");
 const schemas2 = require("./publci/sche2");
+const sessions = require("express-session");
+const cookies = require("cookie-parser");
 
-console.log(data)
+//console.log(data)
 
 app.set("view engine", "ejs");
+app.use(cookies());
 app.use(bodyParser.json({extended: false}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static("./publci"));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 
-mongoose.connect(uri).then(() => console.log('db connected'))
+const oneDay = 1000 * 60 * 60 * 24;
+app.use(sessions({
+    secret: process.env.SESSIONKEY,
+    saveUninitialized: true,
+    cookie: {maxAge: oneDay},
+    resave: false 
+}));
+
+var session;
+
+mongoose.connect(process.env.URIKEY).then(() => console.log('db connected'))
 
 schemas.find({date:{"$gte":new Date(0001,1, 1)}}).then(data => {
-    console.log(data);
+    //console.log(data);
     var gottendt = JSON.stringify(data);
     fs.writeFileSync("./publci/guestbook.json", gottendt, (err) =>{
         if (err) console.log(err);
@@ -27,7 +40,7 @@ schemas.find({date:{"$gte":new Date(0001,1, 1)}}).then(data => {
 })
 
 schemas2.find({date:{"$gte":new Date(0001,1, 1)}}).then(data => {
-    console.log(data);
+    //console.log(data);
     var gottendt2 = JSON.stringify(data);
     fs.writeFileSync("./publci/guestbook.json", gottendt2, (err) =>{
         if (err) console.log(err);
@@ -48,6 +61,43 @@ app.get("/guestbook", (req, res) => {
 
 app.get("/newmessage", (req, res) => {
     res.render("newmessage");
+});
+
+app.get("/admin", (req, res) => {
+    session = req.session;
+    console.log(session);
+    if(session.userid === "admin"){
+        return res.redirect("/adminpage")
+    } else {
+        res.render("admin");
+    }
+});
+
+app.get("/adminpage", (req, res) =>{
+    session = req.session;
+    if(session.userid === "admin"){
+        res.render("adminpage")
+    } else {
+        return res.redirect("/admin");
+    }
+})
+
+app.post("/admin", (req, res) => {
+    console.log(req.body);
+    if(req.body.username === process.env.ADMIN){
+        if(req.body.password === process.env.ADMINPASS){
+            session = req.session;
+            session.userid = req.body.username;
+            console.log(req.session);
+            return res.redirect("/admin");
+        }
+        else {
+            return res.status(401).send();
+        }
+    }
+    else {
+        return res.status(401).send();
+    }
 });
 
 app.post("/newmessage", (req, res)  => {

@@ -5,31 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Guestbook</title>
+    <title>Admin page</title>
 </head>
 <body>
     <header>
-        <h1>Guestbook</h1>
+        <h1>Homepage</h1>
         <a href="/">Homepage</a>
-        <a href="guestbook" class="active">Guestbook</a>
+        <a href="guestbook">Guestbook</a>
         <a href="newmessage">New message</a>
         <a href="ajaxmessage">Ajax message</a>
-        <a href="admin">Admin</a>
+        <a href="admin" class="active">Admin</a>
     </header>
-    
     <div id="gbcont">
-        <table id="gulist">
-            <tr>
-                <th id="usna">Username</th>
-                <th id="ctry">Country</th>
-                <th id="mesag">Message</th>
-            </tr>
-        </table>
-    </div>
-
+    <form id="formi">
+        <p id="inp">Username:</p><input id="uname" type="text" maxlength="20"><br>
+        <p id="inp">Password:</p><input id="passw" type="text" maxlength="20"><br>
+        <input class="subbut" id="subbut" type="button" value="Login">
+    </form>
+</div>
     <footer>Made by Vili Järvinen ~ 2023</footer>
     <script src="/jquery/jquery.js"></script>
     <script src="app.js"></script>
-    <script src="guestlist.js"></script>
+    <script src="login.js"></script>
 </body>
 </html>
