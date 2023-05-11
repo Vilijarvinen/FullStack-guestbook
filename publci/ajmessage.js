@@ -3,15 +3,18 @@ var subbut = document.getElementById("subbut");
 subbut.addEventListener("click", function(){
     $.getJSON("ajmsg.json", function(data){
 
+        var runidarr = [];
         var runid = 0;
+
         data.forEach(obj => {
-            Object.entries(obj).forEach(([key]) => {
+            Object.entries(obj).forEach(([key, value]) => {
                 if (key === "id") {
-                    runid++;
+                    runidarr.push(value);
                 }
             });
         });
 
+        runid = Math.max(...runidarr);
         console.log(runid);
 
         var uo = data;

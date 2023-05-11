@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Admin page</title>
 </head>
 <body>
-    
+    <header>
+        <h1>Homepage</h1>
+        <a href="/">Homepage</a>
+        <a href="guestbook">Guestbook</a>
+        <a href="newmessage">New message</a>
+        <a href="ajaxmessage">Ajax message</a>
+        <a href="admin" class="active">Admin</a>
+    </header>
+    <div id="cont">
+        <div id="gbcont">
+            <p>Hae viestejä:</p>
+            <input type="text" id="glquery">
+        </div>
+        <div id="contchild2">
+            <ul id="glstuff">
+            </ul>
+        </div>
+        <div id="contchild2">
+            <ul id="ajstuff">
+            </ul>
+        </div>
+    </div>
+    <footer>Made by Vili Järvinen ~ 2023</footer>
+    <script src="/jquery/jquery.js"></script>
+    <script src="app.js"></script>
+    <script src="admin.js"></script>
 </body>
 </html>
