@@ -3,7 +3,6 @@ const express = require("express");
 const mongoose = require('mongoose');
 const fs = require("fs");
 const app = express();
-const data = require("./publci/guestbook.json");
 const bodyParser = require('body-parser')
 const schemas = require("./publci/sche");
 const schemas2 = require("./publci/sche2");
@@ -42,7 +41,7 @@ schemas.find({date:{"$gte":new Date(0001,1, 1)}}).then(data => {
 schemas2.find({date:{"$gte":new Date(0001,1, 1)}}).then(data => {
     //console.log(data);
     var gottendt2 = JSON.stringify(data);
-    fs.writeFileSync("./publci/guestbook.json", gottendt2, (err) =>{
+    fs.writeFileSync("./publci/ajmsg.json", gottendt2, (err) =>{
         if (err) console.log(err);
     });
 })
@@ -99,6 +98,90 @@ app.post("/admin", (req, res) => {
         return res.status(401).send();
     }
 });
+
+app.post("/adminpage/search", (req, res) => {
+    console.log(req.body.id);
+    try {
+        schemas.findOne({id: req.body.id}).then(function(found){
+            if (!found) {
+                var nulli = {null: null}
+                return res.send(nulli);
+            }
+            else {
+                console.log(found);
+                return res.send(found);
+            }
+        })
+    }
+    catch (error) {
+        console.log("error", error);
+    }
+});
+
+app.post("/adminpage/delete", (req, res) => {
+    schemas.findOneAndDelete({id: req.body.id}).then(function(){
+        schemas.find({date:{"$gte":new Date(0001,1, 1)}}).then(data => {
+            //console.log(data);
+            var gottendt = JSON.stringify(data);
+            fs.writeFileSync("./publci/guestbook.json", gottendt, (err) =>{
+                if (err) console.log(err);
+            });
+        })
+    });
+});
+
+app.post("/adminpage/delete2", (req, res) => {
+    schemas2.findOneAndDelete({id: req.body.id}).then(function(){
+        schemas2.find({date:{"$gte":new Date(0001,1, 1)}}).then(data => {
+            //console.log(data);
+            var gottendt2 = JSON.stringify(data);
+            fs.writeFileSync("./publci/ajmsg.json", gottendt2, (err) =>{
+                if (err) console.log(err);
+            });
+        })
+    });
+});
+
+app.post("/adminpage/search2", (req, res) => {
+    console.log(req.body.id);
+    try {
+        schemas2.findOne({id: req.body.id}).then(function(found){
+            if(!found){
+                var nulli = {null: null}
+                return res.send(nulli);
+            }
+            else{
+                console.log(found);
+                return res.send(found);
+            }
+        })
+    }
+    catch (error) {
+        console.log("error", error);
+    }
+});
+
+app.post("/adminpage/ids", (req, res) => {
+    try {
+        schemas.find().then(function(a){
+            return res.send(a);
+        })
+    }
+    catch (error) {
+        console.log("error", error);
+    }
+})
+
+app.post("/adminpage/ids2", (req, res) => {
+    try {
+        schemas2.find().then(function(a){
+            return res.send(a);
+        })
+    }
+    catch (error) {
+        console.log("error", error);
+    }
+})
 
 app.post("/newmessage", (req, res)  => {
     try {

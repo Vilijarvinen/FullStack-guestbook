@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Admin page</title>
 </head>
+
 <body>
     <header>
         <h1>Homepage</h1>
@@ -18,21 +20,19 @@
     </header>
     <div id="cont">
         <div id="gbcont">
-            <p>Hae viestejä:</p>
-            <input type="text" id="glquery">
+            <p>Search for messages by ID:</p>
+            <input type="number" id="glquery">
+            <input type="button" id="searchb" value="Search" class="subbut">
         </div>
-        <div id="contchild2">
-            <ul id="glstuff">
-            </ul>
-        </div>
-        <div id="contchild2">
-            <ul id="ajstuff">
-            </ul>
-        </div>
+        <table id="gulist">
+        </table>
+        <table id="gulist2">
+        </table>
     </div>
     <footer>Made by Vili Järvinen ~ 2023</footer>
     <script src="/jquery/jquery.js"></script>
     <script src="app.js"></script>
     <script src="admin.js"></script>
 </body>
+
 </html>
