@@ -89,6 +89,7 @@ serbut.addEventListener("click", function () {
                         headers: { "Content-Type": "application/json", },
                         body: JSON.stringify(asd)
                     })
+                    this.parentElement.parentElement.remove();
                 })
             }
         })
@@ -146,6 +147,7 @@ serbut.addEventListener("click", function () {
                         headers: { "Content-Type": "application/json", },
                         body: JSON.stringify(asd)
                     })
+                    this.parentElement.parentElement.remove();
                 })
             }
         })
